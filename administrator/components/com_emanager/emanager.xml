@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+        <name>com_emanager</name>
+        <creationDate>December 2016</creationDate>
+        <author>Yassine Essadik</author>
+        <authorEmail>essadik34@gmaiL.com</authorEmail>
+        <authorUrl>http://www.ye-it.com</authorUrl>
+        <copyright>YE-IT</copyright>
+        <license>http://www.ye-it.com</license>
+        <version>1.0.0</version>
+        <description>COM_EMANAGER_XML_DESCRIPTION</description>
+        <update>
+                <schemas>
+                        <schemapath type="mysql">sql/updates/mysql</schemapath>
+                </schemas>
+        </update>
+        <files folder="site">
+                <filename>index.html</filename>
+                <filename>emanager.php</filename>
+        </files>
+ 		
+        <administration>
+                <menu>COM_EMANAGER</menu>               
+                <files folder="admin">
+                        <filename>index.html</filename>
+                        <filename>emanager.php</filename>
+                        <filename>controller.php</filename>
+                        <folder>controllers</folder>
+						<folder>sql</folder>
+						<folder>helpers</folder>
+						<folder>models</folder>
+						<folder>tables</folder>
+						<folder>views</folder>
+                </files>
+                <languages folder="admin">
+					<language tag="en-GB">en-GB.com_emanager.ini</language>
+					<language tag="en-GB">en-GB.com_emanager.sys.ini</language>
+					<language tag="fr-FR">fr-FR.com_emanager.ini</language>
+					<language tag="fr-FR">fr-FR.com_emanager.sys.ini</language>
+				</languages>
+        </administration>
+</extension>
