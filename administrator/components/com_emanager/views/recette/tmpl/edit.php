@@ -48,6 +48,11 @@ $input = $app->input;
 
 			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'publishing', JText::_('JGLOBAL_FIELDSET_PUBLISHING', true)); ?>
 				<div class="control-group">
+					<div class="control-label"><?php echo $this->form->getLabel('published'); ?></div>
+					<div class="controls"><?php echo $this->form->getInput('published'); ?></div>
+				</div>
+
+				<div class="control-group">
 					<div class="control-label"><?php echo $this->form->getLabel('created_by'); ?></div>
 					<div class="controls"><?php echo $this->form->getInput('created_by'); ?></div>
 				</div>

@@ -16,7 +16,12 @@
 			buttons="false" class="traduisible" label="COM_EMANAGER_FIELD_GENERAL_DESCRIPTION_LABEL"
 			description="" />
 
-
+		<field
+			name="image_intro"
+			type="media"
+			label="COM_EMANAGER_FIELD_GENERAL_IMAGE_INTRO_LABEL"
+			description="" />
+			
 	</fieldset>
 	<fieldset name="publication" label="COM_EMANAGER_FIELDSET_ITEM_FORM">
 
