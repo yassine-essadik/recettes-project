@@ -115,14 +115,14 @@ function gkIsPortfolioView() {
 	$input = JFactory::getApplication()->input;
 
 	return 
-		$input->getCmd('option', '') === 'com_content' && 
+		($input->getCmd('option', '') === 'com_content' && 
 		(
 			$input->getCmd('view', '') === 'featured' || 
 			(
 				$input->getCmd('view', '') === 'category' && 
 				$input->getCmd('layout', '') === 'blog'
 			)
-		);
+		)) || ($input->getCmd('option', '') === 'com_emanager');
 }
 
 function gkIsArticleView() {
