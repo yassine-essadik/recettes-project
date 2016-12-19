@@ -14,15 +14,10 @@
 			label="COM_EMANAGER_FIELD_GENERAL_IMAGE_INTRO_LABEL"
 			description="" />
 			
-		<field name="ingredients" type="editor" width="500" filter="safehtml" required="true"
-			buttons="false" class="traduisible" label="COM_EMANAGER_FIELD_GENERAL_INGREDIENTS_LABEL"
-			description="" />
-
-		<field name="description" type="editor" width="500" filter="safehtml" required="true"
+		<field name="description" type="editor" width="500" filter="safehtml" 
 			buttons="false" class="traduisible" label="COM_EMANAGER_FIELD_GENERAL_DESCRIPTION_LABEL"
 			description="" />
 
-			
 	</fieldset>
 	<fieldset name="publication" label="COM_EMANAGER_FIELDSET_ITEM_FORM">
 

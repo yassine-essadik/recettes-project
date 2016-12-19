@@ -19,6 +19,19 @@ class EmanagerHelper
 			'index.php?option=com_emanager&view=recettes',
 			$vName == 'recettes'
 		);
+		
+		JHtmlSidebar::addEntry(
+			JText::_('COM_EMANAGER_SUBMENU_CATEGORIES'),
+			'index.php?option=com_emanager&view=categories',
+			$vName == 'categories'
+		);
+		
+		JHtmlSidebar::addEntry(
+			JText::_('COM_EMANAGER_SUBMENU_SUBCATEGORIES'),
+			'index.php?option=com_emanager&view=subcategories',
+			$vName == 'subcategories'
+		);
+	
 	}
 
 	public static function getActions()

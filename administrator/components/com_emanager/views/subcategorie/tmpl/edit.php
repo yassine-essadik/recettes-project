@@ -23,14 +23,14 @@ $input = $app->input;
 <script type="text/javascript">
 	Joomla.submitbutton = function(task)
 	{
-		if (task == 'recette.cancel' || document.formvalidator.isValid(document.id('recette-form')))
+		if (task == 'subcategorie.cancel' || document.formvalidator.isValid(document.id('subcategorie-form')))
 		{
-			Joomla.submitform(task, document.getElementById('recette-form'));
+			Joomla.submitform(task, document.getElementById('subcategorie-form'));
 		}
 	}
 </script>
 
-<form action="<?php echo JRoute::_('index.php?option=com_emanager&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="recette-form" class="form-validate form-horizontal">
+<form action="<?php echo JRoute::_('index.php?option=com_emanager&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="subcategorie-form" class="form-validate form-horizontal">
 
 	<div><?php echo $this->lists['Languages']; ?></<div>
 
