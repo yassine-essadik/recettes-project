@@ -6,7 +6,7 @@
 			class="readonly" />
 			
 		<field name="id_categorie" type="sql" class="inputbox" required="true"
-			query="select id,name from #__esubcategorie where published = 1"
+			query="select id,name from #__ecategorie where published = 1"
 			key_field="id"
 			value_field="name"
 			label="COM_EMANAGER_FIELD_CATEGORIE_LABEL"

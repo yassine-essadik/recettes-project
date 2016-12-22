@@ -13,7 +13,26 @@
 			type="media"
 			label="COM_EMANAGER_FIELD_GENERAL_IMAGE_INTRO_LABEL"
 			description="" />
-			
+
+		<field name="categories"
+			type="sql"
+			description=""
+			label="COM_EMANAGER_FIELD_CATEGORIE_LABEL"
+			query="select id,name from #__ecategorie where published = 1"
+			key_field="id"
+			value_field="name"
+			multiple="multiple"
+		/>
+
+		<field name="subcategories"
+			type="sql"
+			description=""
+			label="COM_EMANAGER_FIELD_SUBCATEGORIE_LABEL"
+			query="select id,name from #__esubcategorie where published = 1"
+			key_field="id"
+			value_field="name"
+			multiple="multiple"
+		/>				
 		<field name="ingredients" type="editor" width="500" filter="safehtml" required="true"
 			buttons="false" class="traduisible" label="COM_EMANAGER_FIELD_GENERAL_INGREDIENTS_LABEL"
 			description="" />

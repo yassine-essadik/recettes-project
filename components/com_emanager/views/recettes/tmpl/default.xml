@@ -5,5 +5,31 @@
 			<![CDATA[COM_EMANAGER_RECETTES_VIEW_DEFAULT_DESC]]>
 		</message>
 	</layout>
+	<fields name="request">
+		<fieldset name="request"
+		>
+			<field name="id_categorie"
+				type="sql"
+				description=""
+				label="COM_EMANAGER_FIELD_CATEGORIE_LABEL"
+				edit="true"
+				query="select id,name from #__ecategorie where published = 1"
+				key_field="id"
+				value_field="name"
+				multiple="multiple"
+			/>
 
+			<field name="id_subcategorie"
+				type="sql"
+				description=""
+				label="COM_EMANAGER_FIELD_SUBCATEGORIE_LABEL"
+				edit="true"
+				query="select id,name from #__esubcategorie where published = 1"
+				key_field="id"
+				value_field="name"
+				multiple="multiple"
+			/>			
+				
+		</fieldset>
+	</fields>
 </metadata>
