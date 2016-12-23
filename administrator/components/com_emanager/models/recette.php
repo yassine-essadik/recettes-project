@@ -119,9 +119,67 @@ class EmanagerModelRecette extends JModelAdmin
 	 */
 	public function save($data)
 	{
+		$db = $this->getDbo();
+		$query = $db->getQuery(true);
+		
+		$categories = $data['categories'];
+		$subcategories = $data['subcategories'];
+		
 		$this->saveTranslation($data, $this->getLang());
 		if (parent::save($data))
 		{
+			$id = (int) $this->getState($this->getName() . '.id');
+			$item = $this->getItem($id);
+			
+			$query->clear();
+				
+			// Deleting old values for this item
+			$query->delete('#__erecette_categorie')
+			->where('id_recette =' . $item->id);
+			$db->setQuery($query);
+			$db->execute();
+				
+			if (!empty($categories))
+			{
+				// Adding new values for this item
+				$query->clear()
+				->insert('#__erecette_categorie')
+				->columns('id_recette, id_categorie');
+					
+				foreach ($categories as $categorie)
+				{
+					$query->values( $item->id . ','. $categorie );
+				}
+					
+				$db->setQuery($query);
+				$db->execute();
+			}
+			
+			$query->clear();
+			
+			// Deleting old values for this item
+			$query->delete('#__erecette_subcategorie')
+			->where('id_recette =' . $item->id);
+			$db->setQuery($query);
+			$db->execute();
+			
+			if (!empty($subcategories))
+			{
+				// Adding new values for this item
+				$query->clear()
+				->insert('#__erecette_subcategorie')
+				->columns('id_recette, id_subcategorie');
+					
+				foreach ($categories as $categorie)
+				{
+					$query->values( $item->id . ','. $categorie );
+				}
+					
+				$db->setQuery($query);
+				$db->execute();
+			}
+				
+			
 			return true;
 		}
 	
@@ -138,9 +196,51 @@ class EmanagerModelRecette extends JModelAdmin
 	public function getItem($pk = null)
 	{
 		$item = parent::getItem($pk);
+		
+		if(!empty($item))
+		{
+			// Récupérer les categories
+			$t = array();
+			$list = $this->geCategoriesByRecette($item->id);
+			if(!empty($list))
+			{
+				foreach ($list as $one)
+				{
+					$t[] = $one->id_categorie;
+				}
+				$item->categories = $t;
+			}
+							
+			// Récupérer les categories
+			$t = array();
+			$list = $this->geCategoriesByRecette($item->id, 'sub');
+			if(!empty($list))
+			{
+				foreach ($list as $one)
+				{
+					$t[] = $one->id_subcategorie;
+				}
+				$item->subcategories = $t;
+			}
+			
+		}
 		return $item;
 	}
 
+	public function geCategoriesByRecette($id, $prefixe=''){
+		if(!empty($id)) :
+			$db = JFactory::getDbo();
+			$query = $db->getQuery(true);
+			$query->select("rc.id_".$prefixe."categorie,c.name");
+			$query->from("#__erecette_".$prefixe."categorie rc");
+			$query->join("INNER", "#__e".$prefixe."categorie c ON c.id = rc.id_".$prefixe."categorie");
+			$query->where("rc.id_recette = ".$id);
+			$db->setQuery($query);
+			return $db->loadObjectList();
+		endif;
+		return null;
+	}
+	
 	protected function preprocessForm(JForm $form, $data, $group = 'content')
 	{
 		parent::preprocessForm($form, $data, $group);
